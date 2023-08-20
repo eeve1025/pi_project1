@@ -17,8 +17,15 @@ def getStockNames()->pd.Series:
 
 stockName:pd.Series = getStockNames()
 print(stockName)
+
+#多重選取
+stockNames:pd.Series = getStockNames()
+stock_name_id = stockNames.index.to_numpy() + "_" + stockNames.values #ndArray陣列相加
 options = st.sidebar.multiselect('請選擇',
-                   stockNames.values,
+                   stock_name_id,
                    placeholder="股票:"  
                        )
-print(options)
+names:list[str] = [] #建立符合ffn需要的股票名稱2330.TW
+for name in options: 
+    name_string = name.split('_')[0]
+    names.append(name_string+".TW")
