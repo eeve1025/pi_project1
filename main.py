@@ -19,7 +19,7 @@ def getStockNames()->pd.Series:
 stockName:pd.Series = getStockNames()
 print(stockName)
 
-def display_Data(dataFrame:pd.DataFrame,start_year) -> None:
+def displayData(dataFrame:pd.DataFrame,start_year) -> None:
     st.subheader(f'{start_year}~目前的歷史資料')  
     st.dataframe(dataFrame)
     st.subheader(f'{start_year}~目前的線圖')
@@ -37,6 +37,6 @@ for name in options:
     name_string = name.split('_')[0]
     names.append(name_string+".TW")
 
-#prices = ffn.get(names, start='2010-01-01')
-#print(prices)
+prices = ffn.get(names, start='2010-01-01')
 
+displayData(prices,start_year='2010-01-01')
