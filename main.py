@@ -20,10 +20,8 @@ stockName:pd.Series = getStockNames()
 print(stockName)
 
 def displayData(dataFrame:pd.DataFrame,start_year) -> None:
-    st.subheader(f'{start_year}~目前的歷史資料')  
-    st.dataframe(dataFrame)
-    st.subheader(f'{start_year}~目前的線圖')
-    st.line_chart(dataFrame)
+        st.subheader(f'{start_year}~目前的歷史資料')
+        st.dataframe(dataFrame)
 
 #多重選取
 stockNames:pd.Series = getStockNames()
@@ -36,7 +34,9 @@ names:list[str] = [] #建立符合ffn需要的股票名稱2330.TW
 for name in options: 
     name_string = name.split('_')[0]
     names.append(name_string+".TW")
-
 prices = ffn.get(names, start='2010-01-01')
 
-displayData(prices,start_year='2010-01-01')
+
+if len(names) != 0:
+    start_year = st.sidebar.selectbox("起始年份",range(2000,2023)) #起始年份選擇
+    displayData(prices,start_year=start_year)
