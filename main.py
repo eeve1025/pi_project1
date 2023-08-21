@@ -25,7 +25,7 @@ def get_dataFrame(menu:list,start_year)->pd.DataFrame:
 
 
 def displayData(dataFrame:pd.DataFrame,start_year) -> None:
-        st.subheader(f'{start_year}~目前的歷史資料')
+        st.subheader(f'{start_year}~今年的歷史資料')
         st.dataframe(dataFrame)
 
 #多重選取
@@ -45,6 +45,7 @@ prices = ffn.get(names, start='2010-01-01')
 if len(names) != 0:
     start_year = st.sidebar.selectbox("起始年份",range(2000,2023)) #起始年份選擇
     dataFrame:pd.DataFrame= get_dataFrame(names,f"{start_year}-01-01")
-    #dataFrame1 = raname_columns_name(dataFrame,stockNames)
-    #st.sidebar.write("you selected:",start_year)
+    dataFrame1 = raname_columns_name(dataFrame,stockNames)
+    st.sidebar.write("you selected:",start_year)
     displayData(prices,start_year=start_year)
+
