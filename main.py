@@ -45,7 +45,8 @@ prices = ffn.get(names, start='2010-01-01')
 if len(names) != 0:
     start_year = st.sidebar.selectbox("起始年份",range(2000,2023)) #起始年份選擇
     dataFrame:pd.DataFrame= get_dataFrame(names,f"{start_year}-01-01")
-    dataFrame1 = raname_columns_name(dataFrame,stockNames)
-    st.sidebar.write("you selected:",start_year)
+    #dataFrame1 = raname_columns_name(dataFrame,stockNames)
+    #st.sidebar.write("you selected:",start_year)
     displayData(prices,start_year=start_year)
+
 
