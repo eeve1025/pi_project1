@@ -39,7 +39,7 @@ names:list[str] = [] #建立符合ffn需要的股票名稱2330.TW
 for name in options: 
     name_string = name.split('_')[0]
     names.append(name_string+".TW")
-prices = ffn.get(names, start='2010-01-01')
+prices = ffn.get(names, start='2010-01-01') 
 
 
 if len(names) != 0:
